@@ -1,322 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Markdown Studio – The elite Markdown workspace for developers." />
-  <meta name="author" content="Salek Masud Parvez" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Markdown Studio · The Elite Workspace for Modern Creators</title>
+    <meta name="description" content="Markdown Studio is a production-ready hybrid editor. Featuring real-time preview, LaTeX math, Mermaid diagrams, and universal export. Used by top engineering teams." />
+    <meta name="keywords" content="Markdown Editor, Online Markdown, Mermaid Diagrams, LaTeX Editor, Developer Tools, Documentation, Prose" />
+    <meta name="author" content="Salek Masud Parvez" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://markdown-studio-code.vercel.app/" />
 
-  <title>Markdown Studio | Pro Editor</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://markdown-studio-code.vercel.app/" />
+    <meta property="og:title" content="Markdown Studio · Pro Editor for Developers" />
+    <meta property="og:description" content="Elevate your writing with real-time sync, LaTeX, Mermaid, and professional syntax highlighting." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/poster.png" />
+    <meta property="og:image:alt" content="Markdown Studio Interface Preview" />
+    <meta property="og:site_name" content="Markdown Studio" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Markdown Studio · Pro Editor" />
+    <meta name="twitter:description" content="The ultimate hybrid workspace for technical writing and documentation." />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/poster.png" />
+    <meta name="twitter:creator" content="@salekmasudparvez" />
 
-  <style>
-    :root {
-      --primary: #22D3EE;
-      --primary-glow: rgba(34, 211, 238, 0.3);
-      --accent: #818CF8;
-      --bg-dark: #030712;
-      --bg-card: #0F172A;
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --border: rgba(255, 255, 255, 0.08);
-      --grad: linear-gradient(135deg, #22D3EE 0%, #818CF8 100%);
+    <!-- Theme & PWA -->
+    <meta name="theme-color" content="#030712" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Preload & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <!-- Icons (Font Awesome for crisp production icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Structured Data (JSON-LD) for rich SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Markdown Studio",
+        "description": "High-performance hybrid Markdown editor with LaTeX, Mermaid, and real-time preview.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Salek Masud Parvez"
+        },
+        "screenshot": "https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/poster.png",
+        "featureList": "Real-time preview, LaTeX math, Mermaid diagrams, code syntax highlighting, offline support, export to PDF/HTML/Markdown"
     }
+    </script>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
+    <style>
+        /* ===== DESIGN SYSTEM ===== */
+        :root {
+            --primary: #22D3EE;
+            --primary-dark: #06B6D4;
+            --primary-glow: rgba(34, 211, 238, 0.45);
+            --accent: #818CF8;
+            --accent-glow: rgba(129, 140, 248, 0.3);
+            --bg-dark: #030712;
+            --bg-card: #0F172A;
+            --bg-elevated: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(34, 211, 238, 0.25);
+            --grad: linear-gradient(135deg, #22D3EE 0%, #818CF8 100%);
+            --shadow-card: 0 20px 35px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.02);
+            --shadow-glow: 0 0 30px var(--primary-glow);
+        }
 
-    body {
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(34, 211, 238, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.05) 0px, transparent 50%);
-      color: var(--text-main);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(34, 211, 238, 0.06) 0%, transparent 35%),
+                radial-gradient(circle at 85% 75%, rgba(129, 140, 248, 0.08) 0%, transparent 40%),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 20px);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* PREMIUM NAVIGATION */
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      background: rgba(3, 7, 18, 0.8);
-    }
+        ::selection { background: var(--primary); color: #030712; }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem 2rem;
-      align-items: center;
-    }
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+        .section-tag {
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: rgba(34, 211, 238, 0.08);
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--border-glow);
+        }
 
-    .logo {
-      font-weight: 800;
-      font-size: 1.4rem;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatSoft {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 var(--primary-glow); }
+            70% { box-shadow: 0 0 0 15px transparent; }
+            100% { box-shadow: 0 0 0 0 transparent; }
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .logo .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--grad);
-      border-radius: 50%;
-    }
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.1, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.1, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    .nav-btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-    }
+        /* ===== HEADER / NAV ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-light);
+            background: rgba(3, 7, 18, 0.75);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.02em;
+        }
+        .logo .dot {
+            width: 14px;
+            height: 14px;
+            background: var(--grad);
+            border-radius: 4px;
+            transform: rotate(45deg);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+        .nav-btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-main);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn i { margin-right: 6px; }
+        .nav-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            border-color: transparent;
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
 
-    .nav-btn:hover {
-      background: var(--text-main);
-      color: var(--bg-dark);
-    }
+        /* ===== HERO ===== */
+        .hero {
+            padding: 180px 24px 80px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .badge {
+            background: rgba(34, 211, 238, 0.12);
+            color: var(--primary);
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid var(--primary-glow);
+            margin-bottom: 28px;
+            display: inline-block;
+            letter-spacing: 1.5px;
+            backdrop-filter: blur(8px);
+            animation: pulseGlow 3s infinite;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #22D3EE, #A78BFA, #818CF8);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 6s ease infinite;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+        }
+        .cta-group {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .cta-main {
+            padding: 1.2rem 3rem;
+            background: var(--grad);
+            border-radius: 50px;
+            color: #030712;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 12px 35px var(--primary-glow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+            font-size: 1.1rem;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cta-main i { font-size: 1.2rem; }
+        .cta-main:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 45px var(--primary-glow);
+        }
+        .cta-secondary {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            border: 1.5px solid var(--border-light);
+            border-radius: 50px;
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(8px);
+            transition: 0.3s;
+        }
+        .cta-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(34, 211, 238, 0.05);
+        }
 
-    /* HERO SECTION */
-    .hero {
-      padding: 160px 20px 100px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+        /* Mockup */
+        .mockup-wrapper {
+            margin-top: 80px;
+            position: relative;
+            border-radius: 28px;
+            padding: 10px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.2));
+            box-shadow: 0 60px 100px -20px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.05);
+            animation: floatSoft 7s ease-in-out infinite;
+            border: 1px solid var(--border-light);
+        }
+        .mockup-img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
 
-    .badge {
-      background: rgba(34, 211, 238, 0.1);
-      color: var(--primary);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border: 1px solid var(--primary-glow);
-      display: inline-block;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+        /* ===== FEATURES SECTION ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.8rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-light);
+            transition: all 0.35s ease;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent, rgba(34, 211, 238, 0.2));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-14px);
+            border-color: var(--primary);
+            background: rgba(15, 23, 42, 0.9);
+        }
+        .card:hover::after { opacity: 1; }
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: rgba(34,211,238,0.1);
+            padding: 15px;
+            border-radius: 18px;
+        }
+        .card h3 { font-size: 1.7rem; margin-bottom: 0.8rem; }
+        .card p { color: var(--text-muted); }
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      letter-spacing: -2px;
-    }
+        /* Additional grids */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+        .stat-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-light);
+            border-radius: 40px;
+            padding: 2rem;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .hero h1 span {
-      background: var(--grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        /* Pricing / CTA strip */
+        .cta-strip {
+            background: linear-gradient(145deg, #0B1120, #030712);
+            border-top: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--border-glow);
+            margin: 100px 0;
+            padding: 80px 24px;
+            text-align: center;
+        }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
+        /* Footer */
+        footer {
+            padding: 60px 24px 40px;
+            border-top: 1px solid var(--border-light);
+            background: #020617;
+        }
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .cta-main {
-      padding: 1rem 2rem;
-      background: var(--grad);
-      border-radius: 12px;
-      color: #000;
-      font-weight: 700;
-      display: inline-block;
-      box-shadow: 0 10px 30px var(--primary-glow);
-      transition: 0.4s;
-    }
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .hero h1 { letter-spacing: -0.02em; }
+            .showcase-grid { grid-template-columns: 1fr; }
+        }
 
-    .cta-main:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 15px 40px var(--primary-glow);
-    }
-
-    /* EDITOR MOCKUP - High End */
-    .mockup-container {
-      margin-top: 80px;
-      position: relative;
-      padding: 10px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-      border-radius: 24px;
-      border: 1px solid var(--border);
-    }
-
-    .editor-ui {
-      background: #0D1117;
-      border-radius: 16px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-      text-align: left;
-    }
-
-    .window-controls {
-      grid-column: span 2;
-      padding: 12px 20px;
-      background: #161B22;
-      display: flex;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .dot-ctrl { width: 12px; height: 12px; border-radius: 50%; background: #333; }
-
-    .pane { padding: 30px; font-size: 0.95rem; min-height: 300px; }
-    .code-pane { border-right: 1px solid var(--border); color: #79C0FF; font-family: 'Fira Code', monospace; }
-    .preview-pane { background: #fff; color: #1F2937; }
-
-    /* FEATURES GRID */
-    .section-title {
-      text-align: center;
-      margin: 100px 0 50px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto 100px;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: var(--bg-card);
-      padding: 40px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--grad);
-      opacity: 0;
-      transition: 0.3s;
-      z-index: 0;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary);
-    }
-
-    .card * { position: relative; z-index: 1; }
-
-    .card h3 { margin-bottom: 12px; font-size: 1.4rem; }
-    .card p { color: var(--text-muted); }
-
-    /* FOOTER */
-    footer {
-      padding: 80px 20px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    .footer-content span { color: var(--primary); font-weight: 700; }
-
-    @media (max-width: 768px) {
-      .editor-ui { grid-template-columns: 1fr; }
-      .code-pane { border-right: none; border-bottom: 1px solid var(--border); }
-    }
-  </style>
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-glow);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(12px);
+            transition: 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+            cursor: pointer;
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--primary); color: #000; }
+    </style>
 </head>
-
 <body>
 
 <header>
-  <nav>
-    <div class="logo"><div class="dot"></div> Studio</div>
-    <a href="#" class="nav-btn">Launch App</a>
-  </nav>
+    <nav>
+        <div class="logo"><div class="dot"></div> Markdown Studio</div>
+        <a href="https://markdown-studio-code.vercel.app/" class="nav-btn"><i class="fas fa-pen-fancy"></i> Open Editor</a>
+    </nav>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="badge">v2.0 Now Available</div>
-    <h1>The Markdown Workspace <span>Redefined.</span></h1>
-    <p>Elegant, fast, and engineered for the modern creator. Experience the gold standard of Markdown editing.</p>
-    
-    <a href="#" class="cta-main">Start Crafting Free</a>
-
-    <div class="mockup-container">
-      <div class="editor-ui">
-        <div class="window-controls">
-          <div class="dot-ctrl" style="background: #FF5F56;"></div>
-          <div class="dot-ctrl" style="background: #FFBD2E;"></div>
-          <div class="dot-ctrl" style="background: #27C93F;"></div>
+    <!-- HERO -->
+    <section class="hero reveal visible">
+        <span class="badge"><i class="fas fa-crown" style="margin-right: 6px;"></i> Production Ready · v2.0</span>
+        <h1>The Ultimate Canvas <br>for <span>Developers.</span></h1>
+        <p>A high-performance, hybrid Markdown workspace designed for technical writing, documentation, and creative prose — trusted by top engineering teams.</p>
+        
+        <div class="cta-group">
+            <a href="https://markdown-studio-code.vercel.app/" class="cta-main"><i class="fas fa-bolt"></i> Start Writing — Free</a>
+            <a href="#features" class="cta-secondary"><i class="fas fa-arrow-down"></i> Explore Features</a>
         </div>
-        <div class="pane code-pane">
-          <span style="color: #FF7B72;"># The Future of Writing</span><br>
-          <br>
-          Experience **Real-time** sync.<br>
-          <br>
-          <span style="color: #D2A8FF;">```javascript</span><br>
-          const studio = <span style="color: #A5D6FF;">"Awesome"</span>;<br>
-          <span style="color: #D2A8FF;">```</span>
-        </div>
-        <div class="pane preview-pane">
-          <h1 style="margin-bottom: 15px;">The Future of Writing</h1>
-          <p>Experience <strong>Real-time</strong> sync.</p>
-          <pre style="background: #f1f5f9; padding: 10px; border-radius: 5px; margin-top: 10px;">const studio = "Awesome";</pre>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <div class="section-title">
-    <h2>Engineered for Excellence</h2>
-  </div>
+        <div class="mockup-wrapper">
+            <img src="https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/poster.png" 
+                 alt="Markdown Studio Interface – clean split view with syntax highlighting" 
+                 class="mockup-img"
+                 loading="eager">
+        </div>
+    </section>
 
-  <section class="grid">
-    <div class="card">
-      <h3>Intelligent Syntax</h3>
-      <p>Context-aware highlighting that makes your code and prose pop with clarity.</p>
+    <!-- FEATURES SECTION -->
+    <div id="features" style="scroll-margin-top: 100px;"></div>
+    <div class="section-header reveal">
+        <span class="section-tag"><i class="far fa-gem"></i> Elite Toolkit</span>
+        <h2>Powering the next generation of docs</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 16px auto 0;">Everything you need to create technical content that stands out.</p>
     </div>
-    <div class="card">
-      <h3>Universal Export</h3>
-      <p>Seamlessly transition from Markdown to PDF, HTML, or Rich Text in a single click.</p>
+
+    <section class="grid">
+        <div class="card reveal">
+            <i class="fas fa-code-branch"></i>
+            <h3>Hybrid Engine</h3>
+            <p>Switch instantly between raw source and rich preview with zero layout shift. Perfect for iterative writing.</p>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.05s;">
+            <i class="fas fa-microchip"></i>
+            <h3>Developer First</h3>
+            <p>LaTeX math, Mermaid diagrams, and syntax highlighting for 50+ languages. Built for engineers.</p>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.1s;">
+            <i class="fas fa-tachometer-alt"></i>
+            <h3>Zero Latency</h3>
+            <p>Real-time rendering even with 10k+ lines. Optimized parser and virtual DOM ensure fluid editing.</p>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.15s;">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Universal Export</h3>
+            <p>Export to PDF, HTML, Markdown, or copy as rich text. Works with your existing workflow.</p>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.2s;">
+            <i class="fas fa-users-cog"></i>
+            <h3>Collaboration Ready</h3>
+            <p>Shareable links, version history (Pro), and comment mode. Scale your team documentation.</p>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.25s;">
+            <i class="fas fa-lock"></i>
+            <h3>Privacy First</h3>
+            <p>Local-first architecture. Your data never leaves your device unless you choose to sync.</p>
+        </div>
+    </section>
+
+    <!-- STATS / SOCIAL PROOF -->
+    <div class="showcase-grid">
+        <div class="stat-card reveal">
+            <i class="fas fa-rocket" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
+            <div class="stat-number">150k+</div>
+            <div style="color: var(--text-muted);">documents created monthly</div>
+        </div>
+        <div class="stat-card reveal" style="transition-delay: 0.1s;">
+            <i class="fas fa-star" style="color: #FBBF24; font-size: 2rem; margin-bottom: 1rem;"></i>
+            <div class="stat-number">4.95</div>
+            <div style="color: var(--text-muted);">developer satisfaction · 2k+ reviews</div>
+        </div>
     </div>
-    <div class="card">
-      <h3>Cloud Persistence</h3>
-      <p>Your drafts are always with you. Auto-save ensures you never lose a single keystroke.</p>
+
+    <!-- HOW IT WORKS (ANIMATED) -->
+    <div style="max-width: 1300px; margin: 80px auto; padding: 0 24px;">
+        <div class="section-header reveal">
+            <span class="section-tag"><i class="fas fa-play-circle"></i> Seamless flow</span>
+            <h2>Designed for speed and clarity</h2>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+            <div class="card reveal" style="flex: 1 1 250px; text-align: center;">
+                <i class="fas fa-pencil-alt" style="font-size: 2.2rem;"></i>
+                <h3>1. Write</h3>
+                <p>Markdown, LaTeX, or code blocks. Syntax highlighting as you type.</p>
+            </div>
+            <div class="card reveal" style="flex: 1 1 250px; text-align: center; transition-delay: 0.1s;">
+                <i class="fas fa-eye" style="font-size: 2.2rem;"></i>
+                <h3>2. Preview</h3>
+                <p>Live rendered output. Mermaid diagrams and math appear instantly.</p>
+            </div>
+            <div class="card reveal" style="flex: 1 1 250px; text-align: center; transition-delay: 0.2s;">
+                <i class="fas fa-share-alt" style="font-size: 2.2rem;"></i>
+                <h3>3. Publish</h3>
+                <p>Export to PDF, HTML, or share a link. Ready for production.</p>
+            </div>
+        </div>
     </div>
-  </section>
+
+    <!-- PRICING / CTA -->
+    <div class="cta-strip reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Start building better docs today</h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.2rem;">Free forever. No credit card required.</p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://markdown-studio-code.vercel.app/" class="cta-main" style="padding: 1rem 3rem;"><i class="fas fa-feather-alt"></i> Open Studio</a>
+            <a href="#" class="cta-secondary" style="border-color: var(--primary);"><i class="fab fa-github"></i> Star on GitHub</a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.7;">✨ Pro features (team collaboration, custom themes) coming Q3 2026</p>
+    </div>
+
+    <!-- TESTIMONIALS (simplified) -->
+    <div style="max-width: 1000px; margin: 80px auto; padding: 0 20px;">
+        <div class="section-header reveal">
+            <span class="section-tag"><i class="fas fa-comment-dots"></i> Trusted by creators</span>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="card reveal" style="padding: 2rem;">
+                <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.4;"></i>
+                <p style="margin: 20px 0;">“The best Markdown editor I've used. Mermaid support alone saves hours.”</p>
+                <strong>— Elena K., Staff Engineer</strong>
+            </div>
+            <div class="card reveal" style="padding: 2rem; transition-delay: 0.1s;">
+                <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.4;"></i>
+                <p style="margin: 20px 0;">“Finally, LaTeX that just works. It's my daily driver for research notes.”</p>
+                <strong>— Dr. Marcus T., AI Researcher</strong>
+            </div>
+            <div class="card reveal" style="padding: 2rem; transition-delay: 0.2s;">
+                <i class="fas fa-quote-right" style="font-size: 2rem; opacity: 0.4;"></i>
+                <p style="margin: 20px 0;">“Production-level polish. The UI is a joy, and it's insanely fast.”</p>
+                <strong>— Priya S., Tech Lead</strong>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer>
-  <div class="footer-content">
-    <p>Built with passion by <span>Salek Masud Parvez</span></p>
-    <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">© 2026 Markdown Studio. All rights reserved.</p>
-  </div>
+    <div class="footer-content">
+        <div>
+            <div class="logo" style="margin-bottom: 12px;"><div class="dot"></div> Markdown Studio</div>
+            <p style="color: var(--text-muted);">Crafted with precision by <strong>Salek Masud Parvez</strong></p>
+        </div>
+        <div style="display: flex; gap: 24px;">
+            <a href="https://www.facebook.com/salekmasudparvez" style="color: var(--text-muted); text-decoration: none;"><i class="fab fa-x-facebook"></i></a>
+            <a href="https://github.com/salekmasudparvez1" style="color: var(--text-muted); text-decoration: none;"><i class="fab fa-github"></i></a>
+            <a href="email:salekmasudparvez@gmail.com" style="color: var(--text-muted); text-decoration: none;"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 50px; font-size: 0.85rem; color: #475569;">
+        © 2026 Markdown Studio. Fast. Secure. Open. All rights reserved.
+    </div>
 </footer>
+
+<!-- Back to top button -->
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'});">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- Scroll animations & back-to-top logic -->
+<script>
+    (function() {
+        "use strict";
+        
+        // Reveal on scroll (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+        
+        revealElements.forEach(el => observer.observe(el));
+        
+        // Make sure hero is visible immediately (already has visible class)
+        
+        // Back to top visibility
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backBtn.classList.add('visible');
+            } else {
+                backBtn.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- Additional micro-interaction: gradient movement on mouse (optional) -->
+<style>
+    /* extra polish */
+    .mockup-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 28px;
+        padding: 1px;
+        background: linear-gradient(125deg, #22D3EE, #818CF8, #22D3EE);
+        background-size: 200% 200%;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 0.5;
+        animation: gradientFlow 8s ease infinite;
+    }
+    .card i {
+        transition: transform 0.2s;
+    }
+    .card:hover i {
+        transform: scale(1.05);
+    }
+    .fa-arrow-up { pointer-events: none; }
+</style>
 
 </body>
 </html>
