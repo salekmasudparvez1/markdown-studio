@@ -1,91 +1,141 @@
+# Markdown stduio - GitHub Marketing Kit
+
+Use this file as plug-and-play marketing content for your GitHub repo, release notes, and social launch posts.
+
+## 1) Short Pitch (One Line)
+
+Markdown stduio is a production-grade Markdown workspace with a VS Code-style UX, live preview, and one-click export to MD/HTML/PDF.
+
+## 2) Repo Description (GitHub About)
+
+Production-grade Markdown editor with VS Code-style UI, live preview, copy-as-code, and export to .md/.html/.pdf.
+
+## 3) Repo Topics (GitHub Tags)
+
+markdown, markdown-editor, react, vite, codemirror, markdown-preview, technical-writing, documentation, productivity, opensource
+
+## 4) README Hero Section (Copy/Paste)
+
+```markdown
+<div align="center">
+
 # Markdown stduio
 
-Production-grade hybrid Markdown editor inspired by Notion and VS Code workflows.
+Production-grade Markdown workspace inspired by VS Code.
 
-## Highlights
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![License](https://img.shields.io/badge/license-MIT-green)](#license)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](../../pulls)
 
-- Hybrid editing engine:
-	- Rich text editing with TipTap
-	- Raw Markdown editing with CodeMirror
-	- Live preview with secure markdown-it pipeline
-- Loss-aware conversion flow:
-	- Markdown -> Rich (rendered HTML)
-	- Rich -> Markdown (Turndown + GFM rules)
-- CommonMark + GFM support with extended syntax:
-	- Headings, links, references, nested lists, task lists, blockquotes
-	- Tables with alignment
-	- Footnotes, definition lists, abbreviations
-	- Highlight, subscript, superscript, keyboard tags
-	- Math (KaTeX), Mermaid, safe inline HTML, details/summary
-- UX features:
-	- Split/editor/preview layouts
-	- Sticky toolbar + formatting actions
-	- Slash command menu
-	- Keyboard shortcuts
-	- Outline sidebar + live stats
-- Storage and export:
-	- Debounced auto-save to localStorage
-	- Manual save
-	- Export as .md, .html, .pdf (print flow)
-- Performance and security:
-	- Large-document preview guard + sectioned rendering
-	- Debounced updates
-	- Sanitized rendering pipeline with DOMPurify
+Write faster, preview instantly, and export with confidence.
 
-## Stack
+</div>
+```
 
-- React + Vite
-- TipTap (rich editor)
-- CodeMirror (raw markdown editor)
-- markdown-it + plugins (preview rendering)
-- Turndown + GFM plugin (rich-to-markdown conversion)
-- Zustand (state management)
-- Tailwind CSS v4 (+ Typography plugin)
+## 5) Feature Highlights Block
 
-## Folder Structure
+```markdown
+## Why Markdown stduio?
+
+- VS Code-like editor experience
+- Markdown-first workflow
+- Live split preview (Editor + Preview)
+- Copy as fenced code block
+- One-click export to `.md`, `.html`, `.pdf`
+- Local autosave for zero-loss writing
+- Clean UI for developers and technical writers
+```
+
+## 6) Release Notes Template
+
+```markdown
+## Markdown stduio v1.0.0
+
+### Highlights
+- Introduced markdown-only editing workflow for cleaner writing.
+- Added full iconized toolbar and VS Code-style panel labels.
+- Added production toast notifications (replaced browser alerts).
+- Improved PDF export flow with reliable generation.
+
+### Improvements
+- Better responsive behavior for sidebar, editor, and footer.
+- Cleaner preview area and improved readability.
+- Faster perceived performance with lazy-loaded modules.
+
+### Notes
+- If you find bugs or have feature requests, open an issue.
+- Contributions and PRs are welcome.
+```
+
+## 7) GitHub Social Preview Texts
+
+### Option A: Clean Launch
 
 ```text
-src/
-	components/
-		EditorLayout.jsx
-		MarkdownPreview.jsx
-		ModeSwitchers.jsx
-		OutlineSidebar.jsx
-		RawMarkdownEditor.jsx
-		RichTextEditor.jsx
-		SlashCommandMenu.jsx
-		StatsBar.jsx
-		Toolbar.jsx
-	editor/
-		defaultDocument.js
-		markdownPipeline.js
-	hooks/
-		useAutosave.js
-		useDebouncedCallback.js
-		useDocumentStats.js
-		useKeyboardShortcuts.js
-	store/
-		editorStore.js
-	utils/
-		exporters.js
+Introducing Markdown stduio: a production-grade Markdown workspace with a VS Code feel.
+
+- Live split preview
+- Copy as code
+- Export to MD/HTML/PDF
+- Fast and clean UX
+
+Built for developers, writers, and teams.
+Repo: <your-github-repo-link>
 ```
 
-## Development
+### Option B: Developer-Focused
 
-```bash
-npm install
-npm run dev
+```text
+Built a Markdown editor that feels like VS Code.
+
+Markdown stduio includes:
+- Markdown-first editing
+- Instant preview
+- Export pipeline (.md, .html, .pdf)
+- Production-grade UI and interactions
+
+Would love feedback and contributions.
+<your-github-repo-link>
 ```
 
-## Production Build
+### Option C: Community Invite
 
-```bash
-npm run lint
-npm run build
+```text
+Markdown stduio is now on GitHub.
+
+If you write docs, notes, specs, or technical content, try it and share feedback.
+PRs welcome.
+
+Repo: <your-github-repo-link>
 ```
 
-## Notes
+## 8) GitHub Issue/PR CTA Snippet
 
-- Mermaid is lazy-loaded in preview mode to reduce initial bundle impact.
-- Preview rendering is sanitized before being mounted in the DOM.
-- The rich-text engine supports core Markdown structures and round-trips through a configurable conversion layer for future schema extensions.
+```markdown
+## Contributing
+
+Contributions are welcome.
+
+- Open an issue for bugs and feature ideas
+- Submit PRs for improvements
+- Help improve docs and templates
+
+If you use Markdown stduio, leave a star to support the project.
+```
+
+## 9) Optional License Section Snippet
+
+```markdown
+## License
+
+MIT License. You are free to use, modify, and distribute.
+```
+
+## 10) Quick Checklist Before Publishing
+
+- Replace `<your-github-repo-link>` with your repo URL.
+- Add actual screenshots or GIF demos in README.
+- Ensure license file exists (MIT recommended).
+- Add first release note using the template above.
+- Pin best issue/feature discussion for community engagement.
