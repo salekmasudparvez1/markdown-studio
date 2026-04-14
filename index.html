@@ -1,242 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- META -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Markdown Studio – A fast, modern Markdown editor with live preview and export features." />
-  <meta name="keywords" content="markdown editor, live preview, markdown studio, writing tool" />
+  <meta name="description" content="Markdown Studio – The elite Markdown workspace for developers." />
   <meta name="author" content="Salek Masud Parvez" />
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Markdown Studio" />
-  <meta property="og:description" content="A production-grade Markdown workspace for developers and creators." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/Markdown%20studio%20app%20promotion%20poster.png" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/salekmasudparvez1/markdown-studio/refs/heads/main/Markdown%20studio%20app%20promotion%20poster.png" />
+  <title>Markdown Studio | Pro Editor</title>
 
-  <!-- THEME -->
-  <meta name="theme-color" content="#0D1117" />
-
-  <title>Markdown Studio</title>
-
-  <!-- FONT OPTIMIZATION -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- FAVICON -->
-  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #22D3EE;
-      --bg-dark: #0D1117;
-      --bg-light: #111827;
-      --text-main: #E6EDF3;
-      --text-muted: #9CA3AF;
-      --border: #1F2937;
+      --primary-glow: rgba(34, 211, 238, 0.3);
+      --accent: #818CF8;
+      --bg-dark: #030712;
+      --bg-card: #0F172A;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border: rgba(255, 255, 255, 0.08);
+      --grad: linear-gradient(135deg, #22D3EE 0%, #818CF8 100%);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at top, #111827, var(--bg-dark));
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(34, 211, 238, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.05) 0px, transparent 50%);
       color: var(--text-main);
-      overflow-x: hidden;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* NAV */
+    /* PREMIUM NAVIGATION */
     header {
-      position: sticky;
+      position: fixed;
+      width: 100%;
       top: 0;
-      backdrop-filter: blur(10px);
-      background: rgba(13, 17, 23, 0.7);
-      z-index: 100;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(3, 7, 18, 0.8);
     }
 
     nav {
       display: flex;
       justify-content: space-between;
-      padding: 20px 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
       align-items: center;
     }
 
     .logo {
       font-weight: 800;
-      font-size: 20px;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .logo span {
-      color: var(--primary);
+    .logo .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--grad);
+      border-radius: 50%;
     }
 
     .nav-btn {
-      padding: 10px 18px;
-      border: 1px solid var(--primary);
+      padding: 0.6rem 1.2rem;
       border-radius: 8px;
-      color: var(--primary);
-      transition: 0.3s;
-    }
-
-    .nav-btn:hover {
-      background: var(--primary);
-      color: var(--bg-dark);
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 80px 10%;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 60px);
-      font-weight: 800;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      margin-top: 20px;
-      color: var(--text-muted);
-      font-size: 18px;
-    }
-
-    .cta {
-      margin-top: 40px;
-    }
-
-    .cta a {
-      background: linear-gradient(135deg, var(--primary), #0EA5E9);
-      padding: 16px 28px;
-      border-radius: 10px;
-      color: var(--bg-dark);
       font-weight: 600;
-      box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
-      transition: 0.3s;
-      display: inline-block;
-    }
-
-    .cta a:hover {
-      transform: translateY(-3px);
-    }
-
-    /* MOCKUP */
-    .mockup {
-      margin-top: 70px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .editor {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 14px;
-      background: #0B1220;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      display: flex;
-      overflow: hidden;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px);}
-      50% { transform: translateY(-10px);}
-    }
-
-    .panel {
-      width: 50%;
-      padding: 20px;
-    }
-
-    .left {
-      border-right: 1px solid var(--border);
-      color: #60A5FA;
-      font-family: monospace;
-    }
-
-    .right {
-      background: #ffffff;
-      color: #111;
-    }
-
-    /* FEATURES */
-    .features {
-      margin-top: 80px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      padding: 10px 18px;
-      border-radius: 20px;
-      background: rgba(34, 211, 238, 0.1);
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      font-size: 14px;
-    }
-
-    /* SECTION */
-    .section {
-      padding: 100px 10%;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .section p {
-      color: var(--text-muted);
-    }
-
-    /* GRID */
-    .grid {
-      margin-top: 50px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--bg-light);
-      padding: 25px;
-      border-radius: 12px;
-      transition: 0.3s;
+      font-size: 0.9rem;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
     }
 
+    .nav-btn:hover {
+      background: var(--text-main);
+      color: var(--bg-dark);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 160px 20px 100px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      background: rgba(34, 211, 238, 0.1);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid var(--primary-glow);
+      display: inline-block;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-main {
+      padding: 1rem 2rem;
+      background: var(--grad);
+      border-radius: 12px;
+      color: #000;
+      font-weight: 700;
+      display: inline-block;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      transition: 0.4s;
+    }
+
+    .cta-main:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 40px var(--primary-glow);
+    }
+
+    /* EDITOR MOCKUP - High End */
+    .mockup-container {
+      margin-top: 80px;
+      position: relative;
+      padding: 10px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+    }
+
+    .editor-ui {
+      background: #0D1117;
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+      text-align: left;
+    }
+
+    .window-controls {
+      grid-column: span 2;
+      padding: 12px 20px;
+      background: #161B22;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot-ctrl { width: 12px; height: 12px; border-radius: 50%; background: #333; }
+
+    .pane { padding: 30px; font-size: 0.95rem; min-height: 300px; }
+    .code-pane { border-right: 1px solid var(--border); color: #79C0FF; font-family: 'Fira Code', monospace; }
+    .preview-pane { background: #fff; color: #1F2937; }
+
+    /* FEATURES GRID */
+    .section-title {
+      text-align: center;
+      margin: 100px 0 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--grad);
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 0;
+    }
+
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-10px);
       border-color: var(--primary);
     }
 
+    .card * { position: relative; z-index: 1; }
+
+    .card h3 { margin-bottom: 12px; font-size: 1.4rem; }
+    .card p { color: var(--text-muted); }
+
     /* FOOTER */
     footer {
-      padding: 40px;
-      text-align: center;
-      color: #6B7280;
+      padding: 80px 20px;
       border-top: 1px solid var(--border);
+      text-align: center;
+      background: rgba(15, 23, 42, 0.5);
     }
 
-    footer span {
-      color: var(--primary);
+    .footer-content span { color: var(--primary); font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .editor-ui { grid-template-columns: 1fr; }
+      .code-pane { border-right: none; border-bottom: 1px solid var(--border); }
     }
   </style>
 </head>
@@ -245,85 +253,69 @@
 
 <header>
   <nav>
-    <div class="logo">Markdown <span>Studio</span></div>
-    <a href="#" class="nav-btn" aria-label="Start writing">Start Writing</a>
+    <div class="logo"><div class="dot"></div> Studio</div>
+    <a href="#" class="nav-btn">Launch App</a>
   </nav>
 </header>
 
 <main>
+  <section class="hero">
+    <div class="badge">v2.0 Now Available</div>
+    <h1>The Markdown Workspace <span>Redefined.</span></h1>
+    <p>Elegant, fast, and engineered for the modern creator. Experience the gold standard of Markdown editing.</p>
+    
+    <a href="#" class="cta-main">Start Crafting Free</a>
 
-<section class="hero">
-  <h1>Markdown <span>Studio</span></h1>
-  <p>A production-grade Markdown workspace for creators and developers.</p>
-
-  <div class="cta">
-    <a href="#">Start Writing Now →</a>
-  </div>
-
-  <div class="mockup">
-    <div class="editor">
-      <div class="panel left">
-        <p># Welcome to Markdown Studio</p>
-        <p>- Write in Markdown</p>
-        <p>- Think in VS Code</p>
-        <p>`code snippet example`</p>
+    <div class="mockup-container">
+      <div class="editor-ui">
+        <div class="window-controls">
+          <div class="dot-ctrl" style="background: #FF5F56;"></div>
+          <div class="dot-ctrl" style="background: #FFBD2E;"></div>
+          <div class="dot-ctrl" style="background: #27C93F;"></div>
+        </div>
+        <div class="pane code-pane">
+          <span style="color: #FF7B72;"># The Future of Writing</span><br>
+          <br>
+          Experience **Real-time** sync.<br>
+          <br>
+          <span style="color: #D2A8FF;">```javascript</span><br>
+          const studio = <span style="color: #A5D6FF;">"Awesome"</span>;<br>
+          <span style="color: #D2A8FF;">```</span>
+        </div>
+        <div class="pane preview-pane">
+          <h1 style="margin-bottom: 15px;">The Future of Writing</h1>
+          <p>Experience <strong>Real-time</strong> sync.</p>
+          <pre style="background: #f1f5f9; padding: 10px; border-radius: 5px; margin-top: 10px;">const studio = "Awesome";</pre>
+        </div>
       </div>
-      <div class="panel right">
-        <h3>Welcome</h3>
-        <p>Write beautifully formatted content instantly.</p>
-      </div>
     </div>
+  </section>
+
+  <div class="section-title">
+    <h2>Engineered for Excellence</h2>
   </div>
 
-  <div class="features">
-    <div class="chip">Live Preview</div>
-    <div class="chip">Export PDF</div>
-    <div class="chip">Copy as Code</div>
-    <div class="chip">VS Code Feel</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Built for Developers & Creators</h2>
-  <p>Fast, responsive, and designed for modern workflows.</p>
-
-  <div class="grid">
+  <section class="grid">
     <div class="card">
-      <h3>Markdown Only</h3>
-      <p>Focused writing without distractions.</p>
+      <h3>Intelligent Syntax</h3>
+      <p>Context-aware highlighting that makes your code and prose pop with clarity.</p>
     </div>
-
     <div class="card">
-      <h3>Split Preview</h3>
-      <p>See your output in real time.</p>
+      <h3>Universal Export</h3>
+      <p>Seamlessly transition from Markdown to PDF, HTML, or Rich Text in a single click.</p>
     </div>
-
     <div class="card">
-      <h3>Export Anywhere</h3>
-      <p>.md, .html, .pdf in one click.</p>
+      <h3>Cloud Persistence</h3>
+      <p>Your drafts are always with you. Auto-save ensures you never lose a single keystroke.</p>
     </div>
-
-    <div class="card">
-      <h3>Production Ready</h3>
-      <p>Optimized for real-world usage.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Start Writing Today</h2>
-  <p>Experience a better way to write Markdown.</p>
-
-  <div class="cta">
-    <a href="#">Start Writing Now →</a>
-  </div>
-</section>
-
+  </section>
 </main>
 
 <footer>
-  Made by <span>Salek Masud Parvez</span><br />
-  Contact: <span>salekmasudparvez@gmail.com</span>
+  <div class="footer-content">
+    <p>Built with passion by <span>Salek Masud Parvez</span></p>
+    <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">© 2026 Markdown Studio. All rights reserved.</p>
+  </div>
 </footer>
 
 </body>
