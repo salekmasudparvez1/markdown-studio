@@ -1,59 +1,91 @@
+# Markdown stduio
 
-```markdown
-# 🚀 Markdown Studio
+Production-grade hybrid Markdown editor inspired by Notion and VS Code workflows.
 
-**Markdown Studio** is a production-grade, distraction-free workspace designed specifically for developers and content creators who want a high-performance writing experience.
+## Highlights
 
-![Markdown Studio Preview](https://via.placeholder.com/800x400?text=Markdown+Studio+UI+Mockup)
+- Hybrid editing engine:
+	- Rich text editing with TipTap
+	- Raw Markdown editing with CodeMirror
+	- Live preview with secure markdown-it pipeline
+- Loss-aware conversion flow:
+	- Markdown -> Rich (rendered HTML)
+	- Rich -> Markdown (Turndown + GFM rules)
+- CommonMark + GFM support with extended syntax:
+	- Headings, links, references, nested lists, task lists, blockquotes
+	- Tables with alignment
+	- Footnotes, definition lists, abbreviations
+	- Highlight, subscript, superscript, keyboard tags
+	- Math (KaTeX), Mermaid, safe inline HTML, details/summary
+- UX features:
+	- Split/editor/preview layouts
+	- Sticky toolbar + formatting actions
+	- Slash command menu
+	- Keyboard shortcuts
+	- Outline sidebar + live stats
+- Storage and export:
+	- Debounced auto-save to localStorage
+	- Manual save
+	- Export as .md, .html, .pdf (print flow)
+- Performance and security:
+	- Large-document preview guard + sectioned rendering
+	- Debounced updates
+	- Sanitized rendering pipeline with DOMPurify
 
----
+## Stack
 
-## ✨ Key Features
+- React + Vite
+- TipTap (rich editor)
+- CodeMirror (raw markdown editor)
+- markdown-it + plugins (preview rendering)
+- Turndown + GFM plugin (rich-to-markdown conversion)
+- Zustand (state management)
+- Tailwind CSS v4 (+ Typography plugin)
 
-* **⚡ Live Split Preview:** Watch your content transform into beautifully formatted text in real-time.
-* **💻 VS Code Aesthetics:** A familiar, dark-themed environment optimized for code snippets and technical writing.
-* **📄 Multi-Format Export:** Seamlessly export your work as `.md`, `.html`, or `.pdf`.
-* **🎨 Production-Ready UI:** Built with the Inter font family and a modern, responsive CSS grid.
-
-## 🛠️ Tech Stack
-
-* **Frontend:** HTML5, CSS3 (Modern Flexbox & Grid)
-* **Typography:** [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts
-* **Design:** Radial gradients, glassmorphism-inspired chips, and smooth CSS animations.
-
-## 🚀 Getting Started
-
-To run this project locally, simply clone the repository and open the `index.html` file in your preferred browser.
-
-```bash
-# Clone the repository
-git clone [https://github.com/yourusername/markdown-studio.git](https://github.com/yourusername/markdown-studio.git)
-
-# Navigate to the project folder
-cd markdown-studio
-
-# Open index.html (Linux example)
-xdg-open index.html
-```
-
-## 📐 Project Structure
+## Folder Structure
 
 ```text
-├── index.html      # Main landing page & UI logic
-├── assets/         # Images and icons
-└── README.md       # Project documentation
+src/
+	components/
+		EditorLayout.jsx
+		MarkdownPreview.jsx
+		ModeSwitchers.jsx
+		OutlineSidebar.jsx
+		RawMarkdownEditor.jsx
+		RichTextEditor.jsx
+		SlashCommandMenu.jsx
+		StatsBar.jsx
+		Toolbar.jsx
+	editor/
+		defaultDocument.js
+		markdownPipeline.js
+	hooks/
+		useAutosave.js
+		useDebouncedCallback.js
+		useDocumentStats.js
+		useKeyboardShortcuts.js
+	store/
+		editorStore.js
+	utils/
+		exporters.js
 ```
 
----
+## Development
 
-## 👨‍💻 Author
-
-**Salek Masud Parvez**
-* 📧 **Email:** salekmasudparvez@gmail.com
-* 💼 **Portfolio:** [Your Portfolio Link Here]
-
----
-
-### 📝 License
-This project is open-source and available under the **MIT License**.
+```bash
+npm install
+npm run dev
 ```
+
+## Production Build
+
+```bash
+npm run lint
+npm run build
+```
+
+## Notes
+
+- Mermaid is lazy-loaded in preview mode to reduce initial bundle impact.
+- Preview rendering is sanitized before being mounted in the DOM.
+- The rich-text engine supports core Markdown structures and round-trips through a configurable conversion layer for future schema extensions.
