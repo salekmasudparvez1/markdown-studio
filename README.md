@@ -30,29 +30,6 @@ A modern, fast, and production-grade Markdown workspace for developers and creat
 
 ---
 
-## 🛠️ Tech Stack
-
-* HTML5
-* CSS3
-* Google Fonts (Inter)
-* Deployed on Vercel
-
----
-
-## 📦 Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/your-username/markdown-studio.git
-cd markdown-studio
-```
-
-Open `index.html` in your browser.
-
----
-
-
 
 ## ✍️ Author
 
